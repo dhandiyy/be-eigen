@@ -1,3 +1,3 @@
-### Create a New Book
+### Get all books
 GET http://localhost:3000/api/books
 Content-Type: application/json

@@ -18,8 +18,6 @@ export class ReturnBookUseCase {
 		if (!borrowing) {
 			throw new Error(`Borrowing with id ${borrowingId} not found`);
 		}
-
-		console.log(borrowing.bookCode);
 		
 		const [member, book] = await Promise.all([
 			this.memberRepository.findByCode(borrowing.memberCode), 

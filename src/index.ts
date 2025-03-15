@@ -3,6 +3,8 @@ import express from "express";
 import cors from "cors";
 import bookRouter from "./interface/routes/bookRoutes";
 import memberRouter from "./interface/routes/memberRoutes";
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpec } from '../swagger';
 
 const app = express();
 const prisma = new PrismaClient();
@@ -11,6 +13,7 @@ const prisma = new PrismaClient();
 app.use(cors());
 app.use(express.json());
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/api", bookRouter);
 app.use("/api", memberRouter);
 
