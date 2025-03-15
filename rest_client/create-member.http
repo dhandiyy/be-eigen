@@ -3,5 +3,5 @@ POST http://localhost:3000/api/members
 Content-Type: application/json
 
 {
-  "name": "Syamsul"
+  "name": "Sugeng2"
 }

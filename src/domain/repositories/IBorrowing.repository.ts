@@ -5,5 +5,4 @@ export interface BorrowingRepository {
 	countActiveBorrowings(bookCode: string): Promise<number>;
 	countActiveBorrowingsByMember(memberCode: string): Promise<number>;
 	findById(borrowingId: string): Promise<Borrowing | null>
-	// updateBorrowing(borrowing: Borrowing): Promise<void>;
 }

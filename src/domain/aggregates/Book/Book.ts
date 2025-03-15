@@ -2,12 +2,12 @@ import { BookStatus } from "../enums/BookStatus";
 
 export class Book {
 	constructor(
-        public readonly code: string, 
-        public title: string, 
-        public author: string, 
-        public stock: number, 
-        public status: BookStatus = BookStatus.AVAILABLE
-    ) {
+		public readonly code: string, 
+		public title: string, 
+		public author: string, 
+		public stock: number, 
+		public status: BookStatus = BookStatus.AVAILABLE
+	) {
 		if (stock < 0) throw new Error("Stock cannot be negative");
 	}
 
@@ -22,13 +22,18 @@ export class Book {
 
 	borrow(): void {
 		if (this.stock <= 0) {
-			this.status = BookStatus.BORROWED;
 			throw new Error("Book out of stock");
 		}
+
 		this.stock--;
+
+		if (this.stock === 0) {
+			this.status = BookStatus.UNAVAILABLE;
+		}
 	}
 
 	return(): void {
 		this.stock++;
+		this.status = BookStatus.AVAILABLE;
 	}
 }

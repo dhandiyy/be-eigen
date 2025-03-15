@@ -3,7 +3,7 @@ POST http://localhost:3000/api/books
 Content-Type: application/json
 
 {
-  "title": "Twilight",
+  "title": "Twilight3",
   "author": "Stephenie Meyer",
-  "stock": 2
+  "stock": 3
 }

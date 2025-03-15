@@ -5,7 +5,8 @@ export class CreateMemberUseCase {
     constructor(private memberRepository: MemberRepository){}
 
     async execute(input: {name: string}){
-        const member = Member.create(input.name);
+        const lastNumber = await this.memberRepository.getLastMemberNumber();
+        const member = Member.create(input.name, lastNumber);
         await this.memberRepository.save(member);
         return member;
     }

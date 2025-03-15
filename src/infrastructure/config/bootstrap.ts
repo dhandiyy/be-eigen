@@ -10,6 +10,7 @@ import { ListBooksUseCase } from "../../application/use-cases/ListBook/ListBooks
 import { BorrowBookUseCase } from "../../application/use-cases/BorrowBook/BorrowBook.use-case";
 import { ListMemberUseCase } from "../../application/use-cases/ListMember/ListMember.use-cast";
 import { ReturnBookUseCase } from "../../application/use-cases/ReturnBook/ReturnBook.use-case";
+import { PenaltyRepositoryImpl } from "../persistence/repositories/PenaltyRepositoryImpl";
 
 const prisma = new PrismaClient();
 
@@ -17,6 +18,7 @@ const prisma = new PrismaClient();
 const bookRepo = new BookRepositoryImpl(prisma);
 const memberRepo = new MemberRepositoryImpl(prisma);
 const borrowingRepo = new BorrowingRepositoryImpl(prisma);
+const penaltyRepo = new PenaltyRepositoryImpl(prisma);
 
 //intialize use-case
 const createBookUseCase = new CreateBookUseCase(bookRepo);
@@ -24,7 +26,7 @@ const createMemberUseCase = new CreateMemberUseCase(memberRepo);
 const listBooksUseCase = new ListBooksUseCase(bookRepo,borrowingRepo);
 const borrowBookUseCase = new BorrowBookUseCase(bookRepo, memberRepo, borrowingRepo);
 const listMemberUseCase = new ListMemberUseCase(memberRepo, borrowingRepo);
-const returnBookUseCase = new ReturnBookUseCase(borrowingRepo, bookRepo);
+const returnBookUseCase = new ReturnBookUseCase(borrowingRepo, bookRepo, memberRepo, penaltyRepo);
 
 
 export const bookController = new BookController(createBookUseCase,listBooksUseCase, borrowBookUseCase, returnBookUseCase);

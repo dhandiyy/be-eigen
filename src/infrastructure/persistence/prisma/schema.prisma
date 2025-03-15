@@ -22,7 +22,7 @@ enum MemberStatus {
 
 enum BookStatus {
   AVAILABLE
-  BORROWED
+  UNAVAILABLE
   LOST
 }
 

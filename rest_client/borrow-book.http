@@ -3,6 +3,6 @@ POST http://localhost:3000/api/book/borrow
 Content-Type: application/json
 
 {
-  "bookCode": "BF470",
-  "memberCode": "M001"
+  "bookCode": "B9L8Q",
+  "memberCode": "M003"
 }

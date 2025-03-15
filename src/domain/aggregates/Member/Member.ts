@@ -2,7 +2,6 @@ import { MemberStatus } from "../enums/MemberStatus";
 import { Penalty } from "../Penalty/Penalty";
 
 export class Member {
-    private static lastId = 0;
 
     constructor(
         public readonly code: string,
@@ -11,14 +10,15 @@ export class Member {
         public penalties: Penalty[] = []
     ) {}
 
-    static create(name: string): Member {
-        Member.lastId++;
-        const code = `M${Member.lastId.toString().padStart(3, '0')}`;
+    static create(name: string, lastMemberNumber: number): Member {
+        const memberNumber = lastMemberNumber + 1;
+        const code = `M${memberNumber.toString().padStart(3, '0')}`;
         return new Member(code, name);
     }
 
     addPenalty(penalty: Penalty): void {
         this.penalties.push(penalty);
+        this.status = MemberStatus.BANNED;
     }
     
     hasActivePenalty(): boolean {

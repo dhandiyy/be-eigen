@@ -1,5 +1,5 @@
 export enum BookStatus {
     AVAILABLE = "AVAILABLE",
-    BORROWED = "BORROWED",
+    UNAVAILABLE = "UNAVAILABLE",
     LOST = "LOST"
 }
