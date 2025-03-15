@@ -1,0 +1,6 @@
+export enum BorrowingStatus {
+	BORROWED = "BORROWED",
+	RETURNED = "RETURNED",
+	RETURNED_LATE = "RETURNED_LATE",
+	LOST = "LOST",
+}

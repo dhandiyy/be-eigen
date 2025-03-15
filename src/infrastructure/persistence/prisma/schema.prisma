@@ -1,0 +1,64 @@
+// infrastructure/persistence/prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+}
+
+enum BorrowingStatus {
+  BORROWED
+  RETURNED
+  RETURNED_LATE
+  LOST
+}
+
+enum MemberStatus {
+  ACTIVE
+  BANNED
+}
+
+enum BookStatus {
+  AVAILABLE
+  BORROWED
+  LOST
+}
+
+model Member {
+  code   String       @id @default("M01")
+  name   String
+  status MemberStatus @default(ACTIVE)
+  borrowings Borrowing[]
+  penalties Penalty[]
+}
+
+model Book {
+  code   String     @id
+  title  String
+  author String
+  stock  Int        @default(0)
+  status BookStatus @default(AVAILABLE)
+  borrowing Borrowing[]
+}
+
+model Borrowing {
+  id String @id @default(uuid())
+  memberCode String
+  bookCode String
+  borrowedAt DateTime @default(now())
+  dueAt DateTime
+  returnedAt DateTime?
+  status BorrowingStatus @default(BORROWED)
+  member Member @relation(fields: [memberCode], references: [code])
+  book Book @relation(fields: [bookCode], references: [code])
+}
+
+model Penalty {
+  id         String   @id @default(uuid())
+  memberCode String
+  startDate  DateTime
+  endDate    DateTime
+  member     Member   @relation(fields: [memberCode], references: [code])
+}

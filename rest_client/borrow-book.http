@@ -1,0 +1,8 @@
+### Create a New Book
+POST http://localhost:3000/api/book/borrow
+Content-Type: application/json
+
+{
+  "bookCode": "BF470",
+  "memberCode": "M001"
+}

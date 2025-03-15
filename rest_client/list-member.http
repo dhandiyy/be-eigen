@@ -1,0 +1,2 @@
+### Get all members with borrowed books count
+GET http://localhost:3000/api/members
