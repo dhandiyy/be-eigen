@@ -4,7 +4,7 @@ A Domain-Driven Design (DDD) implementation for a library system with books, mem
 
 ## Features
 - 🧑💻 **Member Management**: 
-  - Create members with auto-generated codes (e.g., `M001`)
+  - Create members
   - Track active/banned status
   - Limit: 2 books per member
 - 📚 **Book Management**:
@@ -23,14 +23,13 @@ A Domain-Driven Design (DDD) implementation for a library system with books, mem
 - **Database**: PostgreSQL + Prisma
 - **Validation**: Zod
 - **Architecture**: DDD + Clean Architecture
-- **Tools**: Event Bus, REST Client
-- **Documentation**: Swagger/OpenAPI
+- **Documentation**: Swagger
 
 ## Setup
 1. **Clone repo**:
   ```bash
-  git clone https://github.com/yourusername/library-ddd.git
-  cd library-ddd
+  git clone https://github.com/dhandiyy/be-eigen.git
+  cd be-eigen
   ```
 2. **Install dependencies**:
   ```bash
